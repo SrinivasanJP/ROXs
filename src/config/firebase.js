@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyACqJIChb5XmjF37oyVqBf3aaKOI2jXhM4",
   authDomain: "roxsacademy.firebaseapp.com",
@@ -10,4 +10,4 @@ const firebaseConfig = {
   measurementId: "G-0E9E1K5XHY"
 };
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const auth = getAuth(app);
