@@ -6,6 +6,7 @@ import Courses from './components/pages/Courses'
 import Login from './components/pages/Login'
 import Signup from './components/pages/SignUp'
 import StudentPage from './components/pages/StudentPage.jsx'
+import BasicDetails from './components/pages/BasicDetails.jsx'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signup' element={<Signup />}></Route>
         <Route path='/student' element={<StudentPage />}></Route>
+        <Route path='/initialization' element={<BasicDetails />}></Route>
 
       </Routes>
     </div>
