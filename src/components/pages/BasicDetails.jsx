@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 const StudentForm = () => {
   const [studentDetails, setStudentDetails] = useState({
     studentName: '',
-    studentAge: '',
     dob:'',
     gender: 'other',
     nationality: 'India',
@@ -17,6 +16,7 @@ const StudentForm = () => {
     schoolName: '',
     language: '',
     git: '',
+    edu:'',
     about: ''
   });
   const input_box="border-b-2 w-full pl-8 p-3 mb-6  bg-stone-100 rounded-2xl shadow-sm"
@@ -33,23 +33,15 @@ const handleSubmit = async(e)=>{
 
   return (
     <div className="bg-[#f6f6f6] flex justify-center items-center">
-      <div className="bg-[#fefefe] w-[90%] mx-[10%] my-[10%] rounded-2xl shadow-2xl flex flex-wrap md:p-10 p-2">
+      <div className="bg-[#fefefe] w-[90%] my-[10%] rounded-2xl shadow-2xl flex flex-wrap md:p-10 p-2">
         <img src={SettingSVG} alt="Login Svg" className="w-1/2 p-5 hidden md:block" />
         <div className="w-full md:w-1/2 p-5 flex flex-col justify-center">
           <h1 className="antialiased font-extrabold font text-3xl text-left mb-10">Enter Basic Details</h1>
           <form className='mt-5' onSubmit={(e)=> handleSubmit(e)}>
             <label htmlFor="uname" className="absolute pt-4 pl-2"></label>
             <input type="text" name="uname" id="uname" placeholder="Enter your Fullname" required title="Username" className={input_box} onChange ={(e) => setStudentDetails({...studentDetails, studentName:e.target.value})}/>
-            <input type="number" 
-            min={3} 
-            max={100} 
-            name="age" 
-            id="age" 
-            placeholder="Enter your Age" 
-            required 
-            title="Age" 
-            className={input_box} 
-            onChange={(e) => setStudentDetails({...studentDetails, studentAge:e.target.value})}/>
+            <label htmlFor="dob">Select the date of Birth:</label>
+      
             <input type="date" 
             name="dob" 
             id="dob"  
@@ -57,7 +49,7 @@ const handleSubmit = async(e)=>{
             title="dob" 
             className={input_box} 
             onChange={(e) => setStudentDetails({...studentDetails, dob:e.target.value})}/>
-            <select name="gender" id="gender" className={input_box} required>
+            <select name="gender" id="gender" className={input_box} required onChange={(e)=> setStudentDetails({...studentDetails, gender:e.target.value})}>
                 <option value="">Choose your gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -80,6 +72,15 @@ const handleSubmit = async(e)=>{
             title="institution" 
             className={input_box} 
             onChange={(e) => setStudentDetails({...studentDetails, schoolName:e.target.value})}/>
+            <input type="text" 
+            name="edu" 
+            id="edu" 
+            placeholder="Enter your Educational Background" 
+            required 
+            title="edu" 
+            className={input_box} 
+            onChange={(e) => setStudentDetails({...studentDetails, edu:e.target.value})}/>
+            
             <input type="text"  
             name="lang" 
             id="lang" 
@@ -119,7 +120,7 @@ const handleSubmit = async(e)=>{
             <textarea name="" id="" 
             className={input_box} 
             placeholder='Something about you'
-            onChange={(e) => setStudentDetails({...studentDetails, email:e.target.value})}></textarea>
+            onChange={(e) => setStudentDetails({...studentDetails, about:e.target.value})}></textarea>
             
            
             

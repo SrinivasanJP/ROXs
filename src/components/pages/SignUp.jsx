@@ -17,7 +17,7 @@ function SignUp() {
   const [password, setPassword] = useState("")
   return (
     <div className="bg-[#f6f6f6] h-screen  flex justify-center items-center">
-      <div className="bg-[#fefefe] w-[90%] mx-[10%] rounded-2xl shadow-2xl flex flex-wrap md:p-10 p-2">
+      <div className="bg-[#fefefe] w-[90%] rounded-2xl shadow-2xl flex flex-wrap md:p-10 p-2">
         <img src={SignUPSVG} alt="Login Svg" className="w-1/2 p-5 hidden md:block" />
         <div className="w-full md:w-1/2 p-5 flex flex-col justify-center">
           <h1 className="antialiased font-extrabold font text-3xl text-left mb-10">Sign up</h1>

@@ -7,10 +7,22 @@
 }
 @layer components{
     .sidebar-icon{
-        @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-gray-800 
+        @apply relative flex items-center justify-center h-10 md:h-12 md:w-12 w-10 p-2 mt-2 mb-2 mx-auto shadow-lg bg-gray-800 
         rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear text-green-500
         hover:bg-green-600 hover:text-white
         cursor-pointer
+    }
+    .wide-sidebar-icon{
+        @apply relative flex items-center justify-center h-10 w-[10em] p-2 mt-2 mb-2 mx-auto shadow-lg bg-gray-800 
+        rounded-3xl hover:rounded-xl transition-all duration-300 ease-linear text-green-500
+        hover:bg-green-600 hover:text-white
+        cursor-pointer
+    }
+    .wide-sidebar-tooltip{
+        @apply w-[60%] ml-5
+        text-white
+        text-xs font-bold
+        transition-all duration-200 origin-left
     }
     .sidebar-tooltip {
         @apply absolute w-auto p-2 m-2 min-w-max left-14
