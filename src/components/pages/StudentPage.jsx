@@ -6,6 +6,7 @@ import Courses from '../fragments/Courses'
 import Profile from '../fragments/Profile'
 import PerformanceST from '../fragments/PerformanceST'
 import { doc, getDoc } from 'firebase/firestore'
+import CourseViewPage from '../fragments/CourseViewPage'
 
 
 
@@ -49,13 +50,13 @@ function StudentPage() {
           case "performance":
             return <PerformanceST wideBar={wideBar}/>;
           case "course":
-            return <Courses wideBar={wideBar}/>
+            return <Courses wideBar={wideBar} setFragment={setFragment}/>
           default:
             return null;
         }
       };
   return (
-    <div className='flex'>
+    <div>
         <SideBar  wideBar ={wideBar} setWideBar={setWideBar}  setFragment={setFragment} />
         {renderFragment()}
     </div>

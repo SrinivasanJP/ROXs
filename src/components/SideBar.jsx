@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 function SideBar({setFragment, wideBar, setWideBar}) {
   return (
-    <div className={wideBar?"fixed top-0 left-0 h-screen w-[12em] bg-gray-900 m-0 flex flex-col text-white shadow-lg transition-all duration-500 pt-5 z-20":'fixed top-0 left-0 h-screen w-12 md:w-16 bg-gray-900 m-0 flex flex-col text-white shadow-lg transition-all duration-500 pt-5 z-20'}>
+    <div className={wideBar?"fixed top-0 left-0 h-screen w-[12em] bg-gray-900 m-0 flex flex-col text-white shadow-lg transition-all duration-500 pt-5 z-50":'fixed top-0 left-0 h-screen w-12 md:w-16 bg-gray-900 m-0 flex flex-col text-white shadow-lg transition-all duration-500 pt-5 z-50'}>
       <IoReorderThree className={wideBar?"wide-sidebar-icon bg-green-600 text-gray-100 w-12 transition-all duration-500":"sidebar-icon transition-all duration-500"} onClick={()=>setWideBar(!wideBar)}/>
       <hr className='mx-2'/>
         <SideBarIcon icon ={<FaFire size="20" />} text="Dashboard" wide={wideBar} set = {setFragment}/>

@@ -4,14 +4,16 @@ import {BsFillShieldLockFill} from 'react-icons/bs'
 import SignUPSVG from './../../assets/Auth/Forms-amico.svg'
 import { auth } from './../../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-
-
+const SignUp = ({setPage})=> {
+  
 const createNewUser = async (email, password) =>{
-  await createUserWithEmailAndPassword(auth, email, password)
-  console.log(`User created ${email}, ${password}`)
+  await createUserWithEmailAndPassword(auth, email, password).then((user)=>{
+    setPage("student")
+  }).catch(e=>{
+    console.log(e)
+  })
 }
 
-function SignUp() {
   const [passwordVisibility, setPasswordVisibility] = useState("password")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -33,7 +35,7 @@ function SignUp() {
             <input type="checkbox" name="save" id="save" className='inline-block mt-5'
             />
             <label htmlFor="save" className='mx-2'>Remember me</label>
-            <a href="\login" className='block mt-5 underline font-mono'>back to login</a>
+            <a onClick={()=>setPage("login")} className='block mt-5 underline font-mono cursor-pointer'>back to login</a>
             <button className="rounded-full border bg-cyan-500 text-white font-bold px-5 py-1 mt-5 block" onClick={()=>createNewUser(email, password)}>Register</button>
           </form>
         </div>

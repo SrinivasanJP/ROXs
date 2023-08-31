@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function Profile({wideBar, userData, setWideBar}) {
   const imgDesign = "w-40 mt-5"
   const Card = "flex flex-col justify-center items-center bg-gray-800 w-[90%] rounded-xl mt-5"
-  const mainD="ml-12 flex flex-col w-screen bg-gray-950 text-gray-100 items-center h-full md:h-screen transition-all duration-500"
+  const mainD="ml-12 flex flex-col max-w-screen bg-gray-950 text-gray-100 items-center h-full md:h-screen transition-all duration-500"
   const labelText = "ml-5 mt-2 font-bold"
   const dataText = "mt-2 font-semibold"
   const buttonStyle = " bg-slate-100 text-gray-950 font-bold m-5 w-[90%] text-xl rounded-xl p-3 flex justify-center items-center cursor-pointer"

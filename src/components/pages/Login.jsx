@@ -3,16 +3,13 @@ import {FaUser} from 'react-icons/fa'
 import {BsFillShieldLockFill} from 'react-icons/bs'
 import LoginSVG from './../../assets/Auth/Login-amico.svg'
 import { auth } from './../../config/firebase'
-import { useNavigate } from 'react-router-dom'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { db } from './../../config/firebase'
 import {doc, getDoc} from "firebase/firestore"
-function Login() {
+function Login({setPage}) {
   const [passwordVisibility, setPasswordVisibility] = useState("password")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
-  const navigate = useNavigate();
   auth.onAuthStateChanged(user=>{
     if(user){
       checkBasics()
@@ -24,9 +21,9 @@ function Login() {
     const docRef = doc(db, "user", auth?.currentUser?.uid);
     const docs = await getDoc(docRef);
     if(docs.exists()){
-      navigate("/student")
+      setPage("student")
     }else{
-      navigate("/initialization")
+      setPage("initialization")
     }
   }
 
@@ -59,7 +56,7 @@ function Login() {
             <input type={passwordVisibility} name="password" id="password" placeholder="Enter your password" title="Password" className="border-b-2 w-full pl-8 p-3 bg-stone-100 rounded-2xl shadow-sm" onChange={(e) => setPassword(e.target.value)}/>
             <input type="checkbox" name="save" id="save" className='mt-5' />
             <label htmlFor="save" className='mx-2'>Remember me</label>
-            <a href="/signup" className='block mt-5 underline font-mono'>Create an account</a>
+            <a onClick={()=>setPage("signup")} className='block mt-5 underline font-mono cursor-pointer'>Create an account</a>
             <button className="rounded-full border bg-purple-500 text-white font-bold px-5 py-1 mt-5 block" onClick={onLoginClick}>Login</button>
           </form>
         </div>
