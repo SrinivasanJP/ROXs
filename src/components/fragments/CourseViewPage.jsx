@@ -76,18 +76,18 @@ function CourseViewPage({wideBar, setFragement, id}) {
         <p className='mr-auto'>by {courseDetails.author}</p>
         
       </div>
-      <div className=' bg-gradient-to-r md:w-[60%] rounded-[1em] p-5 shadow-2xl shadow-green-500'>
-        <h2 className=' text-center text-2xl font-bold m-3'>Contents</h2>
+      <div className=' bg-gradient-to-r md:w-[60%] rounded-[1em] p-5 md:shadow-2xl shadow-green-500 '>
+        <h2 className=' text-center text-2xl font-bold m-3'>Course Contents</h2>
         <ol >
           {(contentDetails.contents||[]).map((moduleName, index)=>(
 
               <li className=' odd:bg-gradient-to-r from-gray-800 rounded-xl even:bg-slate-900 shadow-md hover:scale-105'>
                 <div className='flex justify-between p-3 m-5 cursor-pointer flex-wrap' onClick={()=> toggleModuleVisibility(index)}>
-                <h1 className='inline-block w-[70%]'>{Object.keys(moduleName)}</h1>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-</svg>
-</div>
+                  <h1 className='inline-block w-[70%]'>{Object.keys(moduleName)}</h1>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </div>
 
             
             <ul className={`${
@@ -99,12 +99,25 @@ function CourseViewPage({wideBar, setFragement, id}) {
             </ul>
             </li>
           ))}
-
-          
         </ol>
       </div>
+      <Requirements/>
     </div>
   )
 }
+const Requirements = ()=>
+  (
+    <div className='mt-5 md:w-[70%] p-5'>
+      <h1 className=' text-2xl font-bold my-4'>Requirements: </h1>
+      <ul className=' list-disc list-inside'>
+        <li className=' text-sm m-5'>No programming experience needed - I'll teach you everything you need to know</li>
+        <li className=' text-sm m-5'>A computer with access to the internet</li>
+        <li className=' text-sm m-5'>No paid software required</li>
+        <li className=' text-sm m-5'>I'll walk you through, step-by-step how to get all the software installed and set up</li>
+      </ul>
+
+    </div>
+  )
+
 
 export default CourseViewPage
