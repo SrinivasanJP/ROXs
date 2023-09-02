@@ -81,7 +81,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
         <ol >
           {(contentDetails.contents||[]).map((moduleName, index)=>(
 
-              <li className=' odd:bg-gradient-to-r from-gray-800 rounded-xl even:bg-slate-900 shadow-md hover:scale-105'>
+              <li className='bg-gradient-to-r from-gray-800 rounded-xl even:from-slate-900 shadow-md hover:scale-105'>
                 <div className='flex justify-between p-3 m-5 cursor-pointer flex-wrap' onClick={()=> toggleModuleVisibility(index)}>
                   <h1 className='inline-block w-[70%]'>{Object.keys(moduleName)}</h1>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block">
@@ -103,7 +103,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
       </div>
       <Requirements />
       <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900'>
-          <h1 className='hidden md:block w-[50%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
+          <h1 className='hidden md:block w-[40%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
           <RegisterBtn />
       </div>
     </div>
@@ -111,7 +111,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
 }
 const Requirements = ()=>
   (
-    <div className='mt-5 md:w-[70%] p-5'>
+    <div className='mt-5 pb-[6em]  md:w-[70%] p-5'>
       <h1 className=' text-2xl font-bold my-4'>Requirements: </h1>
       <ul className=' list-disc list-inside'>
         <li className=' text-sm m-5'>No programming experience needed - I'll teach you everything you need to know</li>
@@ -123,7 +123,7 @@ const Requirements = ()=>
     </div>
   )
   const RegisterBtn = ()=>(
-    <div role='button' className="bg-slate-100 text-gray-950 font-bold m-5 text-xl rounded-xl p-3 cursor-pointer text-center md:w-[50%]">
+    <div role='button' className="bg-slate-100 text-gray-950 font-bold m-5 text-xl rounded-xl p-3 cursor-pointer h-[2.5em] text-center md:w-[50%]">
         <h1>Register</h1>
       </div>
   )

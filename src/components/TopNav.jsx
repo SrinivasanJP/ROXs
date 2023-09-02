@@ -2,7 +2,7 @@ import React from 'react'
 
 function TopNav({fragmentName, wideBar}) {
   return (
-    <div className='flex md:w-full max-w-screen h-16 items-center  flex-wrap justify-around fixed z-40 bg-gradient-to-r from-gray-900'>
+    <div className='flex md:w-full w-[98%] max-w-screen h-16 items-center  flex-wrap justify-around fixed z-40 bg-gradient-to-r from-gray-900'>
         <h1 className='font-semibold text-sm md:ml-10 md:text-2xl'>{fragmentName}</h1>
         <form  className=' flex justify-evenly w-[50%] bg-gradient-to-br from-transparent to-slate-900 shadow-sm shadow-gray-800 rounded-full items-center py-1 '>
             <label htmlFor="search">
