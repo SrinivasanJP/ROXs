@@ -101,7 +101,11 @@ function CourseViewPage({wideBar, setFragement, id}) {
           ))}
         </ol>
       </div>
-      <Requirements/>
+      <Requirements />
+      <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900'>
+          <h1 className='hidden md:block w-[50%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
+          <RegisterBtn />
+      </div>
     </div>
   )
 }
@@ -117,6 +121,11 @@ const Requirements = ()=>
       </ul>
 
     </div>
+  )
+  const RegisterBtn = ()=>(
+    <div role='button' className="bg-slate-100 text-gray-950 font-bold m-5 text-xl rounded-xl p-3 cursor-pointer text-center md:w-[50%]">
+        <h1>Register</h1>
+      </div>
   )
 
 
