@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { db } from '../../config/firebase'
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { auth, db } from '../../config/firebase'
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { darkColors } from '../../config/styleClass'
 import TopNav from '../TopNav'
 function CourseViewPage({wideBar, setFragement, id}) {  
@@ -8,6 +8,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
   const [courseDetails,setCourseDetails] = useState({})
   const [contentDetails, setContentDetails] = useState({})
 
+  const [regFlag, setRegFlag] = useState(false)
   useEffect(()=>{
     (async()=>{
       try{
@@ -18,11 +19,10 @@ function CourseViewPage({wideBar, setFragement, id}) {
         setCourseDetails(docSnap.data())
       }
       else{
-        console.log("NO doc found");
+        alert("No doc found error")
       }
       
     }catch(err){
-      console.log("UID not loaded")
     }
     })();
     },[]);
@@ -33,14 +33,27 @@ function CourseViewPage({wideBar, setFragement, id}) {
         const contentsSnap = await getDoc(contentsRef);
         if(contentsSnap.exists()){
          setContentDetails(contentsSnap.data())
-         console.log(contentsSnap.data())
         }else{
-         console.log("No document found")
+         alert("Document not found error")
         }}catch(err){
-          console.log("UID not loaded")
         }
       })();
     },[]);
+    useEffect(()=>{
+      (async()=>{
+        try{
+        const contentsRef = doc(db, "courses", id, "registeredStudents",auth.currentUser.uid);
+        const contentsSnap = await getDoc(contentsRef);
+        if(contentsSnap.exists()){
+         setRegFlag(true)
+        }else{
+         setRegFlag(false)
+        }}catch(err){
+          setRegFlag(false)
+        }
+      })();
+
+    },[])
     const maxRating = 5;
   const filledStars = Math.round(courseDetails.ratings);
   const emptyStars = maxRating - filledStars;
@@ -62,6 +75,28 @@ function CourseViewPage({wideBar, setFragement, id}) {
       ☆
     </span>
   ));
+  const handleRegister = async()=>{
+    const docRef = doc(db, "courses",id,"registeredStudents", auth.currentUser.uid)
+    await setDoc(docRef,{register:true}).then(async()=>{
+      const userRef = doc(db, "user", auth.currentUser.uid,"registeredCourses",id)
+      await setDoc(userRef,{register:true}).then(()=>{
+      }).catch((err)=>{
+        alert(err)
+      })
+    })
+    .catch((err)=>{
+      alert(err)
+    })
+  }
+  const RegisterBtn = ()=>(
+    <div role='button' onClick={regFlag?()=>{
+      alert("Already Registered")
+    }:()=>handleRegister()} className={regFlag?"bg-slate-800 text-gray-100 cursor-not-allowed font-bold m-5 text-xl rounded-xl p-3 h-[2.5em] text-center md:w-[50%]":"bg-slate-100 text-gray-900 font-bold m-5 text-xl rounded-xl p-3 cursor-pointer h-[2.5em] text-center md:w-[50%]"}>
+        {regFlag?<h1>Registered</h1>: <h1>Register</h1>}
+      </div>
+  )
+
+  
 
   return (
 
@@ -104,7 +139,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
       <Requirements />
       <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900'>
           <h1 className='hidden md:block w-[40%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
-          <RegisterBtn />
+          <RegisterBtn id={id}/>
       </div>
     </div>
   )
@@ -122,11 +157,6 @@ const Requirements = ()=>
 
     </div>
   )
-  const RegisterBtn = ()=>(
-    <div role='button' className="bg-slate-100 text-gray-950 font-bold m-5 text-xl rounded-xl p-3 cursor-pointer h-[2.5em] text-center md:w-[50%]">
-        <h1>Register</h1>
-      </div>
-  )
-
+ 
 
 export default CourseViewPage
