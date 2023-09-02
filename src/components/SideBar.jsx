@@ -18,7 +18,7 @@ function SideBar({setFragment, wideBar, setWideBar}) {
   )
 }
 const SideBarIcon = ({icon, text = "tool-tip", wide,set}) => (
-    <div className={wide?"wide-sidebar-icon":"sidebar-icon group"} onClick={()=>{set(text.toLowerCase())}}>
+    <div className={wide?"wide-sidebar-icon":"sidebar-icon group"} onClick={()=>{set([text.toLowerCase()])}}>
         {icon}
         <span className={wide?"wide-sidebar-tooltip":'sidebar-tooltip group-hover:scale-100'}>
             {text}

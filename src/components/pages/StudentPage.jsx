@@ -11,7 +11,7 @@ import CourseViewPage from '../fragments/CourseViewPage'
 
 
 function StudentPage() {
-    const [fragment,setFragment] = useState("dashboard");
+    const [fragment,setFragment] = useState(["dashboard"]);
     const [wideBar, setWideBar] = useState(false);
     const [uID, setUID] = useState("");
     const [userData, setUserData] = useState({})
@@ -42,7 +42,7 @@ function StudentPage() {
       })
     }, []);
     const renderFragment = () => {
-        switch (fragment) {
+        switch (fragment[0]) {
           case "dashboard":
             return <Dashboard wideBar={wideBar} setWideBar={setWideBar}/>;
           case "profile":
@@ -51,6 +51,9 @@ function StudentPage() {
             return <PerformanceST wideBar={wideBar}/>;
           case "course":
             return <Courses wideBar={wideBar} setFragment={setFragment}/>
+          case "courseView":
+            return <CourseViewPage wideBar={wideBar} setFragment={setFragment}
+            id={fragment[1]}/>
           default:
             return null;
         }

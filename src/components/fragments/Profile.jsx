@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom'
 
 function Profile({wideBar, userData, setWideBar}) {
   const imgDesign = "w-40 mt-5"
-  const Card = "flex flex-col justify-center items-center bg-gray-800 w-[90%] rounded-xl mt-5"
+  const Card = "flex flex-col justify-center items-center bg-gray-800  rounded-xl mt-5"
   const mainD="ml-12 flex flex-col max-w-screen bg-gray-950 text-gray-100 items-center h-full md:h-screen transition-all duration-500"
   const labelText = "ml-5 mt-2 font-bold"
   const dataText = "mt-2 font-semibold"
-  const buttonStyle = " bg-slate-100 text-gray-950 font-bold m-5 w-[90%] text-xl rounded-xl p-3 flex justify-center items-center cursor-pointer"
+  const buttonStyle = " bg-slate-100 text-gray-950 font-bold m-5 text-xl rounded-xl p-3 flex justify-center items-center cursor-pointer"
 
   const zoro = useNavigate()
 
@@ -25,6 +25,9 @@ function Profile({wideBar, userData, setWideBar}) {
 
   return (
     <div  className={wideBar?mainD+" blur-sm -z-10 md:filter-none md:ml-[12em]":mainD}>
+      <div className='container'>
+
+ 
       <h1 className='mt-5 font-extrabold text-2xl self-start ml-5'>Profile</h1>
       <div className={Card}>
       <img src={userData["gender"]=="male"?man:woman} alt="profile image" className={imgDesign+""} />
@@ -58,6 +61,7 @@ function Profile({wideBar, userData, setWideBar}) {
       <div role='button' onClick={logout} className={buttonStyle}>
         <BiLogOutCircle  className='mr-2 w-6 h-6'/>
         <h1>LOGOUT</h1>
+      </div>
       </div>
    
     </div>

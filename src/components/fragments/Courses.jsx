@@ -10,6 +10,7 @@ function Courses({wideBar, setFragment}) {
     (async ()=>{
         const courseRef = collection(db, "courses")
         const collectionSnap = await getDocs(courseRef)
+        setCoursesCollections([])
         collectionSnap.forEach((doc)=>{
           const newColl = {...doc.data(), id: doc.id}
           setCoursesCollections(old=>[...old, newColl])
@@ -29,7 +30,8 @@ function Courses({wideBar, setFragment}) {
           author = {course["author"]}
           sDescription = {course["sDescription"]}
           rating = {course["ratings"]}
-          key={course["id"]}
+          id={course["id"]}
+          thumbnail = {course["thumbnail"]}
           />
         ))
         }

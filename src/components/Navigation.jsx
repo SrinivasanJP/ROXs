@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/dummyLogo.png'
+
 function Navigation({setPage}) {
+  const [showMenu, setShowMenu] = useState(false)
   return (
 
-    <div className="flex flex-row justify-between fixed w-full flex-wrap bg-white md:p-[1em] p-[.5em] top-0">
-      <div className="flex flex-row items-center">
+    <div className="flex flex-col md:flex-row justify-between fixed md:w-full max-w-full flex-wrap bg-white md:p-[1em] p-[.5em] top-0">
+      <div className="flex flex-row items-center w-screen md:w-fit">
       <img src={logo}alt="Logo" className="w-5 h-5 md:w-10 md:h-10"/>
         <h1 className="mx-5 font-bold"><span className="text-orange-400">ROXs</span> Academy.</h1>
-      </div>
+        <button className='md:hidden ml-auto mr-14' onClick={()=>setShowMenu(!showMenu)}>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+</svg>
+
+      </button>
         
-        <nav className="hidden md:flex ">
+      </div>
+      
+        <nav className={showMenu?"flex":"hidden"+" md:flex rounded-md p-2 pr-4 shadow-lg"}>
           <ul className="flex flex-row justify-evenly items-center flex-wrap">
-            <li className="w-20"><a href="/#home" >Home</a></li>
-            <li className="w-20"><a href="/courses">Courses</a></li>
-            <li className="w-20"><a href="/#about">About</a></li>
-            <li className="w-20"><a href="/#contact">Contact</a></li>
-            <li className=" border rounded-full bg-cyan-500 text-white font-bold text-sm shadow-xl cursor-pointer ml-[1em] mr-[3em]" role="button" tabIndex={0}><a onClick={()=>setPage("login")} className="w-[5.5em] h-[2.5em] flex justify-center items-center">Login</a></li>
+            <li className="w-full md:w-20 text-end md:text-start "><a href="#home" >Home</a></li>
+            <li className="w-full md:w-20 text-end md:text-start "><a onClick="courses">Courses</a></li>
+            <li className="w-full md:w-20 text-end md:text-start "><a href="#about">About</a></li>
+            <li className="w-full md:w-20 text-end md:text-start "><a href="#contact">Contact</a></li>
+            <li className=" border rounded-full bg-cyan-500 text-white font-bold text-sm shadow-xl cursor-pointer ml-auto md:ml[1em] md:mr-[3em] " role="button" tabIndex={0}><a onClick={()=>setPage("login")} className="w-[5.5em] h-[2.5em] flex justify-center items-center">Login</a></li>
           </ul>
         </nav>
     </div>
