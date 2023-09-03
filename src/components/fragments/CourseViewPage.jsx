@@ -7,6 +7,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
 
   const [courseDetails,setCourseDetails] = useState({})
   const [contentDetails, setContentDetails] = useState({})
+  const [registerText, setRegisterText] = useState("Register")
 
   const [regFlag, setRegFlag] = useState(false)
   useEffect(()=>{
@@ -77,9 +78,10 @@ function CourseViewPage({wideBar, setFragement, id}) {
   ));
   const handleRegister = async()=>{
     const docRef = doc(db, "courses",id,"registeredStudents", auth.currentUser.uid)
-    await setDoc(docRef,{register:true}).then(async()=>{
+    await setDoc(docRef,{paid:false}).then(async()=>{
       const userRef = doc(db, "user", auth.currentUser.uid,"registeredCourses",id)
       await setDoc(userRef,{register:true}).then(()=>{
+        setRegFlag(true)
       }).catch((err)=>{
         alert(err)
       })
@@ -116,7 +118,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
         <ol >
           {(contentDetails.contents||[]).map((moduleName, index)=>(
 
-              <li className='bg-gradient-to-r from-gray-800 rounded-xl even:from-slate-900 shadow-md hover:scale-105'>
+              <li className='bg-gradient-to-r from-gray-800 rounded-xl even:from-slate-900 shadow-md hover:scale-105' key={index}>
                 <div className='flex justify-between p-3 m-5 cursor-pointer flex-wrap' onClick={()=> toggleModuleVisibility(index)}>
                   <h1 className='inline-block w-[70%]'>{Object.keys(moduleName)}</h1>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 inline-block">
@@ -128,8 +130,8 @@ function CourseViewPage({wideBar, setFragement, id}) {
             <ul className={`${
           visibleModules[index] ? 'opacity-100 max-h-[1000px] transition-all duration-300 ease-in-out' : 'opacity-0 max-h-0 min-h-0 scale-0 overflow-hidden transition-all duration-300 ease-in-out'
         }`}>
-              {moduleName[Object.keys(moduleName)[0]].map((topics)=>(
-                <li className='list-disc pl-14 p-5 list-inside odd:bg-gradient-to-r from-gray-800 even:bg-slate-900 rounded-xl'>{topics}</li>
+              {moduleName[Object.keys(moduleName)[0]].map((topics, jIndex)=>(
+                <li className='list-disc pl-14 p-5 list-inside odd:bg-gradient-to-r from-gray-800 even:bg-slate-900 rounded-xl' key={jIndex}>{topics}</li>
               ))}
             </ul>
             </li>

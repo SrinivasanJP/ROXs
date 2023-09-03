@@ -30,7 +30,7 @@ function Courses({wideBar, setFragment}) {
        <TopNav fragmentName={"Registered Courses"} 
        wideBar={wideBar}/>
        <div className=' w-[80%] grid grid-flow-row mt-16 grid-cols-1 xl:grid-cols-2 xl:gap-10 '>
-        {coursesCollections.length<=0?( <p>No courses available</p> ): 
+        {coursesCollections.length<=0?( <h1 className='text-center mt-[10em]'>No courses available</h1> ): 
         coursesCollections.map((course)=>
         (
           <CourseCards setFragment={setFragment} 
@@ -40,6 +40,8 @@ function Courses({wideBar, setFragment}) {
           rating = {course["ratings"]}
           id={course["id"]}
           thumbnail = {course["thumbnail"]}
+          cFragment = {"performance"}
+          key={course["id"]}
           />
         ))
         }

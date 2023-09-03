@@ -14,7 +14,6 @@ function Courses({wideBar, setFragment}) {
         collectionSnap.forEach((doc)=>{
           const newColl = {...doc.data(), id: doc.id}
           setCoursesCollections(old=>[...old, newColl])
-          console.log(doc.data(),"   ", doc.id)
         })
     })()
 }, [])
@@ -32,6 +31,8 @@ function Courses({wideBar, setFragment}) {
           rating = {course["ratings"]}
           id={course["id"]}
           thumbnail = {course["thumbnail"]}
+          cFragment = {"courses"}
+          key={course["id"]}
           />
         ))
         }

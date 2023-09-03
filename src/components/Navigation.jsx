@@ -21,7 +21,7 @@ function Navigation({setPage}) {
         <nav className={showMenu?"flex":"hidden"+" md:flex rounded-md p-2 pr-4 shadow-lg"}>
           <ul className="flex flex-row justify-evenly items-center flex-wrap">
             <li className="w-full md:w-20 text-end md:text-start "><a href="#home" >Home</a></li>
-            <li className="w-full md:w-20 text-end md:text-start "><a onClick="courses">Courses</a></li>
+            <li className="w-full md:w-20 text-end md:text-start "><a href="#courses">Courses</a></li>
             <li className="w-full md:w-20 text-end md:text-start "><a href="#about">About</a></li>
             <li className="w-full md:w-20 text-end md:text-start "><a href="#contact">Contact</a></li>
             <li className=" border rounded-full bg-cyan-500 text-white font-bold text-sm shadow-xl cursor-pointer ml-auto md:ml[1em] md:mr-[3em] " role="button" tabIndex={0}><a onClick={()=>setPage("login")} className="w-[5.5em] h-[2.5em] flex justify-center items-center">Login</a></li>

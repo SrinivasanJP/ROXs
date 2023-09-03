@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CourseCards({setFragment, title, sDescription, rating, author, id, thumbnail}) {
+function CourseCards({setFragment, title, sDescription, rating, author, id, thumbnail, cFragment}) {
   const maxRating = 5;
   const filledStars = Math.round(rating);
   const emptyStars = maxRating - filledStars;
@@ -16,7 +16,7 @@ function CourseCards({setFragment, title, sDescription, rating, author, id, thum
     </span>
   ));
   return (
-    <div className='mt-10 group' onClick={()=>setFragment(["courseView",id])} key={id} >
+    <div className='mt-10 group' onClick={cFragment=="courses"?()=>setFragment(["courseView",id]):()=>setFragment(["performanceTracker", id])} key={id} >
          <img src={thumbnail} alt="cover image" className=' w-[13em] h-[8em] md:w-[16em] md:h-[10em] rounded-[.5em] absolute ml-10 cursor-pointer group-hover:scale-125 transition-all duration-500 z-10 shadow-lg shadow-gray-600' />
         
         <div className='bg-gradient-to-br from-gray-950 to-green-600 rounded-[.5em] pt-[8em] md:pt-4 md:pl-[20em] p-5 h-[26em] md:h-[16em] mt-4 opacity-90 cursor-pointer group-hover:scale-105 transition-all duration-700 md:group-hover:pl-[22em] md:group-hover:pt-5 group-hover:pt-[9em] shadow-2xl shadow-green-800 text-white overflow-hidden'>
