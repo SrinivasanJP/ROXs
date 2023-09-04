@@ -5,7 +5,7 @@ import {BiLogOutCircle} from 'react-icons/bi'
 import {auth} from '../../config/firebase'
 import { useNavigate } from 'react-router-dom'
 
-function Profile({wideBar, userData, setWideBar}) {
+function Profile({wideBar, userData, setWideBar, setPage}) {
   const imgDesign = "w-40 mt-5"
   const Card = "flex flex-col justify-center items-center bg-gray-800  rounded-xl mt-5"
   const mainD="ml-12 flex flex-col max-w-screen bg-gray-950 text-gray-100 items-center h-full md:h-screen transition-all duration-500"
@@ -18,7 +18,7 @@ function Profile({wideBar, userData, setWideBar}) {
   const logout = async ()=>{
     await auth.signOut()
     .then(()=>{
-      zoro("/login")
+      setPage("home")
     })
   }
 

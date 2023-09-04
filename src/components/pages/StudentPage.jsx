@@ -11,7 +11,7 @@ import PerformanceTracker from '../fragments/PerformanceTracker'
 
 
 
-function StudentPage() {
+function StudentPage( {setPage}) {
     const [fragment,setFragment] = useState(["dashboard"]);
     const [wideBar, setWideBar] = useState(false);
     const [uID, setUID] = useState("");
@@ -47,7 +47,7 @@ function StudentPage() {
           case "dashboard":
             return <Dashboard wideBar={wideBar} setWideBar={setWideBar}/>;
           case "profile":
-            return <Profile wideBar={wideBar} userData={userData} setWideBar={setWideBar}/>;
+            return <Profile wideBar={wideBar} userData={userData} setWideBar={setWideBar} setPage={setPage}/>;
           case "performance":
             return <PerformanceST wideBar={wideBar} setFragment={setFragment}/>;
           case "course":
