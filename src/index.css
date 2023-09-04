@@ -37,4 +37,7 @@
         /* @apply  md:bg-gray-950 */
         @apply bg-gray-950
     }
+    td,th{
+        @apply border-b-2 p-2 border-gray-500
+    }
 }

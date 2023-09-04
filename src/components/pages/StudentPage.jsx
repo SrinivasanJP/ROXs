@@ -7,6 +7,7 @@ import Profile from '../fragments/Profile'
 import PerformanceST from '../fragments/PerformanceST'
 import { doc, getDoc } from 'firebase/firestore'
 import CourseViewPage from '../fragments/CourseViewPage'
+import PerformanceTracker from '../fragments/PerformanceTracker'
 
 
 
@@ -48,12 +49,15 @@ function StudentPage() {
           case "profile":
             return <Profile wideBar={wideBar} userData={userData} setWideBar={setWideBar}/>;
           case "performance":
-            return <PerformanceST wideBar={wideBar}/>;
+            return <PerformanceST wideBar={wideBar} setFragment={setFragment}/>;
           case "course":
             return <Courses wideBar={wideBar} setFragment={setFragment}/>
           case "courseView":
             return <CourseViewPage wideBar={wideBar} setFragment={setFragment}
             id={fragment[1]}/>
+          case "performanceTracker":
+            return <PerformanceTracker wideBar={wideBar} setFragment={setFragment}
+            id={fragment[1]} />
           default:
             return null;
         }
