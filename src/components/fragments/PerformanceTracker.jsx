@@ -63,7 +63,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
     setVisibleModules(newVisibleModules);
   };
   const Task = ()=>(
-    <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10'>
+    <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10 mt-10'>
       <h1 className=' text-center text-xl font-bold'>Assigned Tasks</h1>
       <table className='mt-8 table-auto w-full'>
         <thead>
@@ -86,6 +86,28 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
     </div>
   )
+  const Course_Materials = ()=>(
+    <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10'>
+      <h1 className=' text-center text-xl font-bold'>Course Materials</h1>
+      <table className='mt-8 table-auto w-full'>
+        <thead>
+          <tr className=' bg-slate-800'>
+            <th className=' w-[10%]'>S.No</th>
+            <th className=' w-[50%]'>Materials</th>
+            <th className=' w-[20%]'>Download Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className='text-center'>1</td>
+            <td>This is the placeholder for the task list</td>
+            <td>submission link</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  )
 
   return (
     <div className={wideBar?darkColors["mainD"]+" md:h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" md:h-full"}>
@@ -94,6 +116,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
       <h1 className=' font-extrabold text-2xl'>{courseDetails.Title}</h1>  
     </div>
+    <Course_Materials/>
     <Task />
     <div className=' bg-gradient-to-r md:w-[60%] rounded-[1em] p-5 md:shadow-2xl shadow-green-500 '>
       <h2 className=' text-center text-2xl font-bold m-3'>Course Contents</h2>
