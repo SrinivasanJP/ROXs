@@ -138,7 +138,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
   return (
     <div className={wideBar?darkColors["mainD"]+" md:h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" md:h-full"}>
     <TopNav fragmentName={"ROXs Academy"}/>
-    <div className={paid?" blur-0 flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5"}>
+    <div className={paid?" blur-0 flex flex-col justify-center items-center my-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center my-20 md:w-[70%]  p-5"}>
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
       <h1 className=' font-extrabold text-2xl'>{courseDetails.Title}</h1>  
     </div>
@@ -187,6 +187,19 @@ function PerformanceTracker({wideBar, id, setFragment}) {
         ))}
       </ol>
     </div>
+      )
+    }
+    {
+      paid&&(
+        <div className='my-10 flex'>
+          <a href="https://firebasestorage.googleapis.com/v0/b/roxsacademy.appspot.com/o/Curriculum%2FWTW2301.pdf?alt=media&token=32bac3ed-5fd4-4f12-83b9-7c3b2966bfd4" className=' inline-block mb-10' target='_blank'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 inline-block mr-4">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+</svg>
+
+
+            Curriculum <span className=' uppercase font-bold'>{id}</span> </a>
+        </div>
       )
     }
     
