@@ -9,19 +9,20 @@ function PerformanceTracker({wideBar, id, setFragment}) {
   const [contentDetails, setContentDetails] = useState({})
   const [tutorFolder, setTutorFolder] = useState({})
 
-  const [regFlag, setRegFlag] = useState(false)
+  const [paid, setpaid] = useState(false)
 
 
   useEffect(()=>{
     const fetchTutorFolder = async ()=>{
 
+      if(paid){
       const docRef = doc(db, "courses", id, "contentDetails", "tutorFolder");
       const docSnap = await getDoc(docRef)
       setTutorFolder(docSnap.data())
-      console.log(docSnap.data())
+      }
     }
     fetchTutorFolder()
-  },[])
+  },[paid])
 
 
   useEffect(()=>{
@@ -60,11 +61,11 @@ function PerformanceTracker({wideBar, id, setFragment}) {
         const contentsRef = doc(db, "courses", id, "registeredStudents",auth.currentUser.uid);
         const contentsSnap = await getDoc(contentsRef);
         if(contentsSnap.exists()){
-         setRegFlag(true)
+         setpaid(contentsSnap.data().paid)
         }else{
-         setRegFlag(false)
+         setpaid(false)
         }}catch(err){
-          setRegFlag(false)
+          setpaid(false)
         }
       })();
 
@@ -77,7 +78,8 @@ function PerformanceTracker({wideBar, id, setFragment}) {
     newVisibleModules[index] = !newVisibleModules[index];
     setVisibleModules(newVisibleModules);
   };
-  const Task = ()=>(
+  const Task = ()=>
+  paid&&(
     <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10 mt-10'>
       <h1 className=' text-center text-xl font-bold'>Assigned Tasks</h1>
       <table className='mt-8 table-auto w-full'>
@@ -105,7 +107,8 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
     </div>
   )
-  const Course_Materials = ()=>(
+  const Course_Materials = ()=>
+  paid &&(
     <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10'>
       <h1 className=' text-center text-xl font-bold'>Course Materials</h1>
       <table className='mt-8 table-auto w-full'>
@@ -135,13 +138,30 @@ function PerformanceTracker({wideBar, id, setFragment}) {
   return (
     <div className={wideBar?darkColors["mainD"]+" md:h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" md:h-full"}>
     <TopNav fragmentName={"ROXs Academy"}/>
-    <div className=' flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5'>
+    <div className={paid?" blur-0 flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5"}>
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
       <h1 className=' font-extrabold text-2xl'>{courseDetails.Title}</h1>  
     </div>
-    <Course_Materials/>
-    <Task />
-    <div className=' bg-gradient-to-r md:w-[60%] rounded-[1em] p-5 md:shadow-2xl shadow-green-500 '>
+    
+      
+         <Course_Materials/>
+          <Task />
+    
+    {
+      !paid &&(
+        <div className='  absolute top-1/2  max-w-screen max-h-screen h-screen flex flex-col items-center'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 inline-block">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+</svg>
+
+          <h1 className="font-extrabold text-3xl">Payment is not done yet</h1>
+          <p>It is offline Course so contact the Tutor to make payment</p>
+        </div>
+      )
+    }
+    {
+      paid && (
+        <div className=' bg-gradient-to-r md:w-[60%] rounded-[1em] p-5 md:shadow-2xl shadow-green-500 '>
       <h2 className=' text-center text-2xl font-bold m-3'>Course Contents</h2>
       
       <ol >
@@ -167,6 +187,9 @@ function PerformanceTracker({wideBar, id, setFragment}) {
         ))}
       </ol>
     </div>
+      )
+    }
+    
   </div>
   )
 }
