@@ -7,8 +7,23 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
   const [courseDetails,setCourseDetails] = useState({})
   const [contentDetails, setContentDetails] = useState({})
+  const [tutorFolder, setTutorFolder] = useState({})
 
   const [regFlag, setRegFlag] = useState(false)
+
+
+  useEffect(()=>{
+    const fetchTutorFolder = async ()=>{
+
+      const docRef = doc(db, "courses", id, "contentDetails", "tutorFolder");
+      const docSnap = await getDoc(docRef)
+      setTutorFolder(docSnap.data())
+      console.log(docSnap.data())
+    }
+    fetchTutorFolder()
+  },[])
+
+
   useEffect(()=>{
     (async()=>{
       try{
@@ -75,12 +90,16 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           </tr>
         </thead>
         <tbody>
+        { tutorFolder.tasks?.map((task, index)=>(
           <tr>
-            <td className='text-center'>1</td>
-            <td>This is the placeholder for the task list</td>
-            <td>submission link</td>
-            <td className='text-center'>Done</td>
+            <td className='text-center'>{index + 1}</td>
+            <td>{task.taskDescription}</td>
+            <td><a href={task.submissionLink}>Click Here</a></td>
+            <td className='text-center'>{task.status}</td>
           </tr>
+           ))
+          
+          }
         </tbody>
       </table>
 
@@ -98,11 +117,15 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           </tr>
         </thead>
         <tbody>
+          { tutorFolder.materials?.map((material, index)=>(
           <tr>
-            <td className='text-center'>1</td>
-            <td>This is the placeholder for the task list</td>
-            <td>submission link</td>
+            <td className='text-center'>{index+1}</td>
+            <td>{material.mDescription}</td>
+            <td><a href={material.mLink} target="_blank">Click here</a></td>
           </tr>
+          ))
+          
+          }
         </tbody>
       </table>
 
