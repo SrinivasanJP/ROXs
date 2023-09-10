@@ -1,15 +1,39 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  mode:'jit',
+module.exports = {
+  darkMode: ["class"],
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  darkMode: false,
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+	],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      fontFamily:{
+        "SpaceMono":["Space Mono"]
+      },
+      keyframes: {
+        
+        blink: {
+          "50%": {
+            backgroundColor: "transparent"
+          },
+          "100%": {
+            backgroundColor: "white"
+          }  
+        }
+      },
+      animation: {
+        blink: "blink 1s infinite alternate"
+      }
     },
   },
   plugins: [],
 }
-
