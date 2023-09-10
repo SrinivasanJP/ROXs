@@ -28,10 +28,23 @@ module.exports = {
           "100%": {
             backgroundColor: "white"
           }  
+        },
+        bounce:{
+          "0%":{
+            transform:'translateY(-25%)'
+          },
+          "50%":{
+            transform:'translateY(0%)'
+          },
+          "100%":{
+            transform:'translateY(10%)'
+          }
+
         }
       },
       animation: {
-        blink: "blink 1s infinite alternate"
+        blink: "blink 1s infinite alternate",
+        drone: "bounce 15s infinite alternate"
       }
     },
   },
