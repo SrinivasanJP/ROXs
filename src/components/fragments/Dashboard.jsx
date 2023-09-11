@@ -75,7 +75,7 @@ function Dashboard({wideBar, setFragment}) {
           <div className='mb-10'>
             <h1 className=' font-SpaceMono font-extrabold text-xl md:text-3xl'>Things you can:</h1>
             <ul className=' font-SpaceMono text-green-600 mt-5'>
-              <li className='mt-5 md:text-2xl'><span>&gt;&gt; </span>Compile your code form anywhere in any device</li>
+              <li className='mt-5 md:text-2xl'><span>&gt;&gt; </span>Compile your code form anywhere with any device</li>
               <li className='mt-5 md:text-2xl'><span>&gt;&gt; </span>Get life time access to the data for registered courses</li>
               <li className='mt-5 md:text-2xl'><span>&gt;&gt; </span>Learn by doing</li>
               <li className='mt-5 md:text-2xl'><span>&gt;&gt; </span>Learn to build from the developers not from the classic tutors</li>
