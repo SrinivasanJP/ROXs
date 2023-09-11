@@ -4,7 +4,7 @@ import { auth } from '../../config/firebase';
 import { db } from '../../config/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-const StudentForm = () => {
+const StudentForm = ({setPage}) => {
   const [studentDetails, setStudentDetails] = useState({
     studentName: '',
     dob:'',
@@ -26,7 +26,7 @@ const handleSubmit = async(e)=>{
     e.preventDefault()
     const docRef = doc(db, "user", auth?.currentUser?.uid)
     await setDoc(docRef, studentDetails).then(res=>{
-        navigate("/student")
+        setPage("student")
     })
 
 }
