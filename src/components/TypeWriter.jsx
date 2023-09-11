@@ -55,7 +55,7 @@ function TypeWriter() {
     
       return (
         <div>
-            <h1 className=' md:text-5xl w-[80%] text-md font-bold inline-block font-SpaceMono md:leading-loose'>{">> "+currentWord}<span className='inline-block ml-2 animate-blink md:h-8 h-5 w-[2px] '></span></h1>
+            <h1 className=' md:text-3xl lg:text-5xl w-[80%] text-md font-bold inline-block font-SpaceMono lg:leading-loose'>{">> "+currentWord}<span className='inline-block ml-2 animate-blink md:h-8 h-5 w-[2px] '></span></h1>
         
         </div>
       );

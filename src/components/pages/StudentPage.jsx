@@ -45,7 +45,7 @@ function StudentPage( {setPage}) {
     const renderFragment = () => {
         switch (fragment[0]) {
           case "dashboard":
-            return <Dashboard wideBar={wideBar} setWideBar={setWideBar}/>;
+            return <Dashboard wideBar={wideBar} setFragment={setFragment}/>;
           case "profile":
             return <Profile wideBar={wideBar} userData={userData} setWideBar={setWideBar} setPage={setPage}/>;
           case "performance":

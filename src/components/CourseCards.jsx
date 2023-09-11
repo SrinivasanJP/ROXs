@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CourseCards({setFragment, title, sDescription, rating, author, id, thumbnail, cFragment}) {
+function CourseCards({setFragment, title, sDescription="", rating="", author, id, thumbnail, cFragment}) {
   const maxRating = 5;
   const filledStars = Math.round(rating);
   const emptyStars = maxRating - filledStars;
