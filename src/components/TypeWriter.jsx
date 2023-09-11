@@ -39,7 +39,6 @@ function TypeWriter() {
                 }
             }else{
                 setCurrentWord(selectedWord.substring(0,j+1))
-                console.log(selectedWord.substring(0,j+1))
                 j=j+1
                 if(j==selectedWord.length){
                     isDeleting=true

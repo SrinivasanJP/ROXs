@@ -7,7 +7,16 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { db } from './../../config/firebase'
 import {doc, getDoc} from "firebase/firestore"
 function Login({setPage}) {
+  const bufferBtn = (<button type="button" class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+  <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+  </svg>
+  Processing...
+</button>)
+  const [login, setLogin] = useState(false)
   const [passwordVisibility, setPasswordVisibility] = useState("password")
+  
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   auth.onAuthStateChanged(user=>{
@@ -21,23 +30,30 @@ function Login({setPage}) {
     const docRef = doc(db, "user", auth?.currentUser?.uid);
     const docs = await getDoc(docRef);
     if(docs.exists()){
+      setLogin(false)
       setPage("student")
     }else{
+      setLogin(false)
       setPage("initialization")
     }
   }
 
   const onLoginClick = async () =>{
-    try{
+    setLogin(true)
+   
+    if(!login){
+      try{
       await signInWithEmailAndPassword(auth, email, password).then(data=>{
-        console.log("Login Success")
         checkBasics()
       })
 
     }catch(e){
-      console.error(e)
+      alert(e.message.slice(22,-2))
+      setLogin(false)
     }
-  
+    }else{
+      alert("We are working on it pleace wait...")
+    }
   }
 
 
@@ -57,7 +73,12 @@ function Login({setPage}) {
             <input type="checkbox" name="save" id="save" className='mt-5' />
             <label htmlFor="save" className='mx-2'>Remember me</label>
             <a onClick={()=>setPage("signup")} className='block mt-5 underline font-mono cursor-pointer'>Create an account</a>
-            <button className="rounded-full border bg-purple-500 text-white font-bold px-5 py-1 mt-5 block" onClick={onLoginClick}>Login</button>
+            <button className="inline-flex items-center px-4 justify-center py-2 mt-5 font-bold leading-6 text-sm shadow rounded-md text-white bg-purple-500 min-w-[7em] transition ease-in-out duration-150" onClick={onLoginClick}>
+            <svg className={login?"animate-spin -ml-1 mr-3 h-5 w-5 text-white":"hidden"} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+              {login?"Processing...":"Login"}</button>
           </form>
         </div>
       </div>
