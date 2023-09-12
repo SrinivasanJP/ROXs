@@ -5,7 +5,7 @@ function Navigation({setPage}) {
   const [showMenu, setShowMenu] = useState(false)
   return (
 
-    <div className="flex flex-col md:flex-row justify-between fixed w-full max-w-full flex-wrap bg-white md:p-[1em] p-[.5em] top-0 left-0">
+    <div className="flex flex-col md:flex-row justify-between fixed w-screen max-w-screen flex-wrap bg-white md:p-[1em] p-[.5em] top-0 left-0 z-50">
       <div className="flex flex-row items-center w-screen md:w-fit">
       <img src={logo}alt="Logo" className="w-5 h-5 md:w-10 md:h-10"/>
         <h1 className="mx-5 font-bold"><span className="text-orange-400">ROXs</span> Academy.</h1>

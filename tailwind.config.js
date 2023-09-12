@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage:{
+        'back1':"url('./assets/svgs/bghome.png')"
+      },
       fontFamily:{
         "SpaceMono":["Space Mono"]
       },
@@ -38,13 +41,22 @@ module.exports = {
           },
           "100%":{
             transform:'translateY(10%)'
+          },
+        },
+        rotateOrbit:{
+          "0% , 100%":{
+            transform:'rotate(10deg) translateY(0%)',
+          },
+          "50%":{
+            transform:'rotate(360deg) translateY(30%)',
           }
-
         }
+
       },
       animation: {
         blink: "blink 1s infinite alternate",
-        drone: "bounce 15s infinite alternate"
+        drone: "bounce 15s infinite alternate",
+        orbit: "rotateOrbit 900s infinite alternate",
       }
     },
   },
