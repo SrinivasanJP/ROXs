@@ -1,7 +1,5 @@
 import React, { useRef, useState } from 'react'
 import Navigation from '../Navigation'
-import bgImg from '../../assets/svgs/homeMan.jpg'
-import s1SVG from '../../assets/svgs/s1.png'
 import planet from '../../assets/svgs/3dPlanet.png'
 import woman3d from '../../assets/svgs/3dWomanLaptop.png'
 const Home = ({setPage}) => {
