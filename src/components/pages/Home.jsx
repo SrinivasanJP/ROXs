@@ -6,6 +6,19 @@ import planet from '../../assets/svgs/3dPlanet.png'
 import woman3d from '../../assets/svgs/3dWomanLaptop.png'
 const Home = ({setPage}) => {
 
+  const [contactData, setContactData]= useState({
+    name: '',
+    email: '',
+    message: '',
+    submitted: false,
+  })
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    setContactData({...contactData,submitted:true})
+  }
+  const handleChange = (e)=>{
+    setContactData({...contactData,[e.target.name]:e.target.value})
+  }
   return (
     <div id="home" className="mt-[66px]"
     >
@@ -50,22 +63,28 @@ const Home = ({setPage}) => {
           </li>
           <li className='mb-10' >
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>Programming</h1>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C++</li>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Python</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Java</li>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Ruby</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>HTML, CSS, JavaScript</li>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>PHP</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Perl</li>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>SQL</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>No SQL</li>
+            <ul>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C++</li>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Python</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Java</li>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Ruby</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>HTML, CSS, JavaScript</li>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>PHP</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Perl</li>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>SQL</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>No SQL</li>
+            </ul>
+            
           </li>
           <li className='mb-10'>
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>Frameworks</h1>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ReactJS</li>
-            <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ExpressJS</li>
-            <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>MERN Stack</li>
+            <ul>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ReactJS</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ExpressJS</li>
+              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>MERN Stack</li>
+            </ul>
+            
           </li>
         </ol>
       </section>
@@ -105,6 +124,56 @@ const Home = ({setPage}) => {
           We are here to answer any questions you may have. Feel free to
           contact us at <a href="mailto:jpsrinivasan38@gmail.com" className='hover:text-orange-300 hover:border-b-2'>help@roxs.com</a>
         </p>
+      </section>
+      <section id="contact" className=' text-gray-100 p-10 md:w-[60%] mx-auto'>
+        <h1 className=' text-3xl font-bold text-center bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-transparent my-14'>Contact Us</h1>
+        {contactData.submitted ? (
+          <div className="message-sent">
+            <p>Thank you for contacting us. We will get back to you shortly.</p>
+          </div>
+        ) : (
+          <div >
+            <p className=' my-5'>Have a question or need assistance? Reach out to us!</p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group mt-5">
+                <label htmlFor="name" className=' block'>Name:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className=' w-full rounded-md text-md text-black p-3 focus:outline-none '
+                  value={contactData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group mt-5">
+                <label htmlFor="email" className='block'>Email:</label>
+                <input
+                  type="email"
+                  className=' w-full rounded-md text-md text-black p-3 focus:outline-none '
+                  id="email"
+                  name="email"
+                  value={contactData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group mt-5">
+                <label htmlFor="message" className='block'>Message:</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  className=' w-full rounded-md text-md text-black p-3 focus:outline-none '
+                  value={contactData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <button type="submit" className=' bg-indigo-600 text-white px-5 py-2 rounded-xl mt-5 font-semibold'>Submit</button>
+            </form>
+          </div>
+        )}
       </section>
     </div>
     
