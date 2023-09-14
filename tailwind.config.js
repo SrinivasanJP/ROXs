@@ -36,11 +36,9 @@ module.exports = {
           "0%":{
             transform:'translateY(-25%)'
           },
-          "50%":{
-            transform:'translateY(0%)'
-          },
+          
           "100%":{
-            transform:'translateY(10%)'
+            transform:'translateY(30%)'
           },
         },
         rotateOrbit:{
