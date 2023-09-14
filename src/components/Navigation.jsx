@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../assets/dummyLogo.png'
+import logo from '../assets/svgs/logo.png'
 
 function Navigation({setPage}) {
   const [showMenu, setShowMenu] = useState(false)
@@ -7,9 +7,9 @@ function Navigation({setPage}) {
 
     <div className="flex flex-col md:flex-row justify-between fixed w-screen max-w-screen flex-wrap text-gray-300 md:p-[1em] p-[.5em] top-0 left-0 z-50 backdrop-blur-sm ">
       <div className="flex flex-row items-center w-screen md:w-fit justify-between flex-wrap">
-        <div className='flex item-center justify-center'>
-          <img src={logo}alt="Logo" className="w-5 h-5 md:w-10 md:h-10"/>
-          <h1 className="mx-5 font-bold"><span className="text-orange-400 font-SpaceMono">ROXs</span> Academy.</h1>
+        <div className='flex item-center justify-center ml-5'>
+          <img src={logo}alt="Logo" className="w-10 h-10 md:w-10 md:h-10"/>
+          <h1 className="mx-1 font-bold flex justify-center items-center md:text-2xl lg:text-3xl md:ml-5 "><span className="text-orange-400 font-SpaceMono">ROXs</span> Academy.</h1>
         </div>
       
         <div className='flex items-center justify-center md:hidden'>
