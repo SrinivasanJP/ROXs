@@ -48,13 +48,15 @@ module.exports = {
           "50%":{
             transform:'rotate(360deg) translateY(30%)',
           }
-        }
+        },
+
 
       },
       animation: {
         blink: "blink 1s infinite alternate",
         drone: "bounce 15s infinite alternate",
         orbit: "rotateOrbit 900s infinite alternate",
+        spinOrbit: "rotateOrbit 300s infinite alternate"
       }
     },
   },

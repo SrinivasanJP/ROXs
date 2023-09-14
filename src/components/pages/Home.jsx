@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import Navigation from '../Navigation'
 import planet from '../../assets/svgs/3dPlanet.png'
+import planet2 from '../../assets/svgs/p2.png'
 import woman3d from '../../assets/svgs/3dWomanLaptop.png'
 const Home = ({setPage}) => {
+  const spanD = 'w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-5 animate-pulse'
+  const liD = ' bg-gradient-to-r  from-slate-950 px-5 py-3 rounded-2xl mt-3'
+  const liED = ' bg-gradient-to-r  from-slate-950 px-5 py-3 rounded-2xl mt-3'
 
   const [contactData, setContactData]= useState({
     name: '',
@@ -21,7 +25,8 @@ const Home = ({setPage}) => {
     <div id="home" className="mt-[66px]"
     >
       <Navigation setPage={setPage}/>
-      <img src={planet} alt="" className='absolute left-52  opacity-70 w-screen animate-orbit' />
+      <img src={planet} alt="" className='absolute left-48  opacity-70 w-[80%] animate-orbit' />
+      <img src={planet2} alt="" className='absolute top-1/2 animate-spinOrbit w-[40%]'/>
       <section className=' w-screen h-screen bg-[#0c1015] md:mt-[10em]' id='home'>
         
         <div className='text-white w-[85%] h-[80%] backdrop-blur-sm backdrop-filter bg-opacity-70 rounded-2xl mx-auto z-10 shadow-gray-700 flex justify-center sm:items-center items-start shadow-inner flex-col p-10'>
@@ -35,56 +40,61 @@ const Home = ({setPage}) => {
 
       </section>
       <section id='courses' className=' h-full w-screen text-gray-100  flex justify-center flex-col md:w-[60%] mx-auto'>
+        <div className=' w-[85%] h-[80%] backdrop-blur-md backdrop-filter bg-opacity-70 rounded-2xl mx-auto z-10 shadow-gray-700 shadow-inner'>
+
+       
+        
         <h1 className=' text-3xl font-bold text-center bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-transparent my-14'>Categorires of Courses</h1>
         <ol className=' flex flex-col w-[80%] mx-auto'>
           <li className='mb-10'>
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>General</h1>
             <ul>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Mathematics</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Computer Science</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Biology</li>
-              <li  className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Chemistry</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Physics</li>
+              <li className={liD}><span className={spanD}></span>Mathematics</li>
+              <li className={liED}><span className={spanD}></span>Computer Science</li>
+              <li className={liD}><span className={spanD}></span>Biology</li>
+              <li  className={liED}><span className={spanD}></span>Chemistry</li>
+              <li className={liD}><span className={spanD}></span>Physics</li>
               
             </ul>
           </li>
           <li className='mb-10'>
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>Technology</h1>
             <ul>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Web Development</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Android Development</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Block Chain</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>AI</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Data Science</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Machine Learning</li>
+              <li className={liD}><span className={spanD}></span>Web Development</li>
+              <li className={liED}><span className={spanD}></span>Android Development</li>
+              <li className={liD}><span className={spanD}></span>Block Chain</li>
+              <li className={liED}><span className={spanD}></span>AI</li>
+              <li className={liD}><span className={spanD}></span>Data Science</li>
+              <li className={liED}><span className={spanD}></span>Machine Learning</li>
             </ul>
           </li>
           <li className='mb-10' >
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>Programming</h1>
             <ul>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>C++</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Python</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Java</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Ruby</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>HTML, CSS, JavaScript</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>PHP</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>Perl</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>SQL</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>No SQL</li>
+              <li className={liD}><span className={spanD}></span>C</li>
+              <li className={liED}><span className={spanD}></span>C++</li>
+              <li className={liD}><span className={spanD}></span>Python</li>
+              <li className={liED}><span className={spanD}></span>Java</li>
+              <li className={liD}><span className={spanD}></span>Ruby</li>
+              <li className=' bg-gradient-to-r  from-slate-950 px-5 py-3 rounded-2xl mt-3'><span className={spanD}></span>HTML, CSS, JavaScript</li>
+              <li className={liD}><span className={spanD}></span>PHP</li>
+              <li className={liED}><span className={spanD}></span>Perl</li>
+              <li className={liD}><span className={spanD}></span>SQL</li>
+              <li className={liED}><span className={spanD}></span>No SQL</li>
             </ul>
             
           </li>
           <li className='mb-10'>
             <h1 className=' bg-gradient-to-r from-[#4D78EF] p-3 text-center rounded-2xl font-bold'>Frameworks</h1>
             <ul>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ReactJS</li>
-              <li className=' bg-gradient-to-r  from-slate-950 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>ExpressJS</li>
-              <li className=' bg-gradient-to-r  from-slate-900 px-10 py-3 rounded-2xl mt-3'><span className='w-2 h-2 bg-[#4D78EF] inline-block rounded-full mr-10 animate-pulse'></span>MERN Stack</li>
+              <li className={liD}><span className={spanD}></span>ReactJS</li>
+              <li className={liED}><span className={spanD}></span>ExpressJS</li>
+              <li className={liD}><span className={spanD}></span>MERN Stack</li>
             </ul>
             
           </li>
         </ol>
+        </div>
       </section>
       <section id="about" className=' text-gray-100 p-10 md:w-[60%] mx-auto'>
         <h1 className=' text-3xl font-bold text-center bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-transparent my-14'>About Our Academy</h1>
