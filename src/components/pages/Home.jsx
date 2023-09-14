@@ -25,14 +25,16 @@ const Home = ({setPage}) => {
     <div id="home" className="mt-[66px]"
     >
       <Navigation setPage={setPage}/>
-      <img src={planet} alt="" className='absolute left-48  opacity-70 w-[80%] animate-orbit' />
+      <img src={planet} alt="" className='absolute -right-36  opacity-70 w-[80%] md:w-[50%] animate-orbit' />
       <img src={planet2} alt="" className='absolute top-1/2 animate-spinOrbit w-[40%]'/>
-      <section className=' w-screen h-screen bg-[#0c1015] md:mt-[10em]' id='home'>
+      <section className=' w-screen h-screen bg-[#0c1015] md:mt-[8em]' id='home'>
         
         <div className='text-white w-[85%] h-[80%] backdrop-blur-sm backdrop-filter bg-opacity-70 rounded-2xl mx-auto z-10 shadow-gray-700 flex justify-center sm:items-center items-start shadow-inner flex-col p-10'>
           <div className='flex flex-col md:flex-row justify-center md:items-center'>
           <h1 className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-4xl leading-[1.2] tracking-tighter text-transparent sm:text-center sm:text-[4rem] sm:leading-[4.75rem] lg:text-left' >Welcome to <br /> <span className=' font-SpaceMono text-orange-400'>ROXs</span> Academy</h1>
-          <img src={woman3d} alt="" width={500} height={500} className='w-25 h-25'/>
+          
+              <img src={woman3d} alt="3D Woman Image" width={500} height={500} className='w-25 h-25 top-50 left-50' id="largeIMG"/>
+          
           </div>
           
           <p className=' text-xl bg-clip-text bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left'>Ignite Your Potential: Where Learning Become Execution  - Welcome to a World of Knowledge at ROXs</p>
