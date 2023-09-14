@@ -9,7 +9,7 @@ function Navigation({setPage}) {
       <div className="flex flex-row items-center w-screen md:w-fit justify-between flex-wrap">
         <div className='flex item-center justify-center'>
           <img src={logo}alt="Logo" className="w-5 h-5 md:w-10 md:h-10"/>
-          <h1 className="mx-5 font-bold"><span className="text-orange-400">ROXs</span> Academy.</h1>
+          <h1 className="mx-5 font-bold"><span className="text-orange-400 font-SpaceMono">ROXs</span> Academy.</h1>
         </div>
       
         <div className='flex items-center justify-center md:hidden'>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Navigation from '../Navigation'
 import planet from '../../assets/svgs/3dPlanet.png'
 import woman3d from '../../assets/svgs/3dWomanLaptop.png'
