@@ -30,7 +30,7 @@ const Home = ({setPage}) => {
           <img src={woman3d} alt="" width={500} height={500} className='w-25 h-25'/>
           </div>
           
-          <p className=' text-xl bg-clip-text bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left'>Ignite Your Potential: Where Reading Become Learning  - Welcome to a World of Knowledge at ROXs</p>
+          <p className=' text-xl bg-clip-text bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left'>Ignite Your Potential: Where Learning Become Execution  - Welcome to a World of Knowledge at ROXs</p>
         </div>
 
       </section>
