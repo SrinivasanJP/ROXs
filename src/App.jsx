@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import Home from './components/pages/Home.jsx'
-import {Route, Routes} from 'react-router-dom'
 import Courses from './components/pages/Courses'
 import Login from './components/pages/Login'
 import Signup from './components/pages/SignUp'
 import StudentPage from './components/pages/StudentPage.jsx'
 import BasicDetails from './components/pages/BasicDetails.jsx'
 import CourseViewPage from './components/fragments/CourseViewPage.jsx'
-
-function App() {
+import { auth } from './config/firebase.js'
+ function App(){
   const [page, setPage] = useState("home")
+  auth.onAuthStateChanged((user)=>{
+    if(user!=null&&user.emailVerified){
+      setPage("student")
+    }
+  })
+  
+  
   const renderPage = ()=>{
     switch (page){
       case "home":{
@@ -35,16 +41,6 @@ function App() {
   return (
     <div>
       {renderPage()}
-      {/* <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/courses' element={<Courses />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/student' element={<StudentPage />}></Route>
-        <Route path='/initialization' element={<BasicDetails />}></Route>
-        <Route path='/courseView' element={<CourseViewPage/>}></Route>
-
-      </Routes> */}
     </div>
   )
 }
