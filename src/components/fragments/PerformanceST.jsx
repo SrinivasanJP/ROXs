@@ -26,7 +26,7 @@ function Courses({wideBar, setFragment}) {
 
 
   return (
-    <div className={wideBar?darkColors["mainD"]+" blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]}>
+    <div className={wideBar?darkColors["mainD"]+" blur-sm md:filter-none md:ml-[12em] h-screen":darkColors["mainD"]+' h-screen'}>
        <TopNav fragmentName={"Registered Courses"} 
        wideBar={wideBar}/>
        <div className=' w-[80%] grid grid-flow-row mt-16 grid-cols-1 xl:grid-cols-2 xl:gap-10 '>
