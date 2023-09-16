@@ -139,8 +139,9 @@ function CourseViewPage({wideBar, setFragement, id}) {
         </ol>
       </div>
       <Requirements />
-      <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900'>
+      <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900 backdrop-blur-sm'>
           <h1 className='hidden md:block w-[40%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
+          <p className='text-center m-3 text-xl font-semibold'>{"Just Rs."+courseDetails.amount+".00"}</p>
           <RegisterBtn id={id}/>
       </div>
     </div>
