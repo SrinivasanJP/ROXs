@@ -92,7 +92,11 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           </tr>
         </thead>
         <tbody>
-        { tutorFolder.tasks?.map((task, index)=>(
+        { tutorFolder.tasks?.length<=0?(
+          <tr>
+            <td colSpan={4} className='text-center'>No tasks assigned yet</td>
+          </tr>
+        ):tutorFolder.tasks?.map((task, index)=>(
           <tr>
             <td className='text-center'>{index + 1}</td>
             <td>{task.taskDescription}</td>
@@ -120,7 +124,8 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           </tr>
         </thead>
         <tbody>
-          { tutorFolder.materials?.map((material, index)=>(
+          { tutorFolder.materials?.length<=0?(<tr>
+            <td colSpan={3} className=' text-center'>No materials uploaded yet</td></tr>):tutorFolder.materials?.map((material, index)=>(
           <tr>
             <td className='text-center'>{index+1}</td>
             <td>{material.mDescription}</td>
