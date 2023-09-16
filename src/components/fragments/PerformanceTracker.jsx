@@ -152,9 +152,10 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
     </div>
   )
+  const wideD =  wideBar?darkColors["mainD"]+" h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" h-full"
 
   return (
-    <div className={wideBar?darkColors["mainD"]+" h-screen blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" h-screen"}>
+    <div className={paid?wideD:wideD+" h-screen"}>
     <TopNav fragmentName={"ROXs Academy"}/>
     <div className={paid?" blur-0 flex flex-col justify-center items-center my-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center my-20 md:w-[70%]  p-5"}>
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
@@ -176,7 +177,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           <p>It is offline Course so contact the Tutor to make payment</p>
           <p className='text-center mt-5 text-orange-500'>Note* once the payment is done contact tutor with the screenshot </p>
           <button className="inline-flex items-center px-4 justify-center py-2 mt-5 font-bold leading-6 text-sm shadow rounded-md bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] text-gray-900 min-w-[7em] transition ease-in-out duration-150 md:hidden" onClick={handlePayment}>Pay now</button>
-          <p className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mt-10 leading-[1.2] tracking-tighter text-transparent sm:text-center sm:text-[4rem] sm:leading-[4.75rem] lg:text-left' >Scan Me to Pay</p>
+          <p className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mt-10 leading-[1.2] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left' >Scan Me to Pay</p>
           <QRCode 
             title="Pay now"
             value = {`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`}
