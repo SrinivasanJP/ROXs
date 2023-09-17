@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Home from './components/pages/Home.jsx'
+import { db } from './config/firebase.js'
+import { doc, getDoc } from 'firebase/firestore'
 import Courses from './components/pages/Courses'
 import Login from './components/pages/Login'
 import Signup from './components/pages/SignUp'
@@ -10,10 +12,19 @@ import { auth } from './config/firebase.js'
  function App(){
   const [page, setPage] = useState("home")
   auth.onAuthStateChanged((user)=>{
-    if(user!=null&&user.emailVerified){
-      setPage("student")
+    if(user!=null && user.emailVerified){
+      checkBasics()
     }
   })
+  const checkBasics = async() =>{
+    const docRef = doc(db, "user", auth?.currentUser?.uid);
+    const docs = await getDoc(docRef);
+    if(docs.exists()){
+      setPage("student")
+    }else{
+      setPage("initialization")
+    }
+  }
   
   
   const renderPage = ()=>{
@@ -22,7 +33,7 @@ import { auth } from './config/firebase.js'
         return (<Home setPage={setPage}/>)
       }
       case "login":{
-        return (<Login setPage={setPage}/>)
+        return (<Login setPage={setPage} checkBasics={checkBasics}/>)
       }
       case "signup":{
         return (<Signup setPage={setPage}/>)

@@ -6,7 +6,7 @@ import { auth } from './../../config/firebase'
 import { signInWithEmailAndPassword} from 'firebase/auth'
 import { db } from './../../config/firebase'
 import {doc, getDoc} from "firebase/firestore"
-function Login({setPage}) {
+function Login({setPage, checkBasics}) {
   const bufferBtn = (<button type="button" className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
   <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -24,17 +24,7 @@ function Login({setPage}) {
       checkBasics()
     }
   })
-  const checkBasics = async() =>{
-    const docRef = doc(db, "user", auth?.currentUser?.uid);
-    const docs = await getDoc(docRef);
-    if(docs.exists()){
-      setLogin(false)
-      setPage("student")
-    }else{
-      setLogin(false)
-      setPage("initialization")
-    }
-  }
+  
 
   const onLoginClick = async () =>{
     setLogin(true)
@@ -42,7 +32,7 @@ function Login({setPage}) {
     if(!login){
       
       try{
-      await signInWithEmailAndPassword(auth, email, password).then(data=>{
+      await signInWithEmailAndPassword(auth, email, password).then(()=>{
         if(auth.currentUser?.emailVerified){
           checkBasics()
         }else{
@@ -50,11 +40,10 @@ function Login({setPage}) {
           setLogin(false)
         }
       })
-
-    }catch(e){
-      alert(e.message.slice(22,-2))
-      setLogin(false)
-    }
+      }catch(e){
+        alert(e.message.slice(22,-2))
+        setLogin(false)
+      }
     }else{
       alert("We are working on it pleace wait...")
     }

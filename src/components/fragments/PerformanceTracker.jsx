@@ -180,7 +180,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
           <p className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mt-10 leading-[1.2] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left' >Scan Me to Pay</p>
           <QRCode 
             title="Pay now"
-            value = {`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`}
+            value = {`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title} ${auth.currentUser.uid}`}
             size={200}
             className=' mt-5'
           />
