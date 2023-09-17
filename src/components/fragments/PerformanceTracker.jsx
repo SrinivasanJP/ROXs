@@ -4,6 +4,7 @@ import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { darkColors } from '../../config/styleClass'
 import TopNav from '../TopNav'
 import QRCode from 'react-qr-code'
+import TutorCard from '../TutorCard.jsx'
 function PerformanceTracker({wideBar, id, setFragment}) {
 
   const [courseDetails,setCourseDetails] = useState({})
@@ -57,6 +58,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
     },[]);
     useEffect(()=>{
       (async()=>{
+        if(paid){
         try{
         const contentsRef = doc(db, "courses", id, "contentDetails","includes");
         const contentsSnap = await getDoc(contentsRef);
@@ -66,8 +68,9 @@ function PerformanceTracker({wideBar, id, setFragment}) {
          alert("Document not found error")
         }}catch(err){
         }
+      }
       })();
-    },[]);
+    },[paid]);
     useEffect(()=>{
       (async()=>{
         try{
@@ -152,6 +155,33 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
     </div>
   )
+  const Schedule = ()=>
+    paid &&(
+    <div className=' bg-gray-900 p-5 rounded-[1em] md:w-[60%] pb-10'>
+      <h1 className=' text-center text-xl font-bold'>Schedule</h1>
+      <table className='mt-8 table-auto w-full'>
+        <thead>
+          <tr className=' bg-slate-800'>
+            <th className=' w-[10%]'>Module No.</th>
+            <th className=' w-[50%]'>Title</th>
+            <th className=' w-[40%]'>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          { contentDetails.contents?.length<=0?(<tr>
+            <td colSpan={3} className=' text-center'>No materials uploaded yet</td></tr>):contentDetails.contents?.map((contents, i)=>(
+              <tr key={i}>
+                <td>{i+1}</td>
+                <td>{Object.keys(contents)}</td>
+                <td className='text-center'>{contentDetails.progress[i]}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+    </div>
+  )
   const wideD =  wideBar?darkColors["mainD"]+" h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" h-full"
 
   return (
@@ -161,8 +191,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
       <h1 className=' font-extrabold text-2xl'>{courseDetails.Title}</h1>  
     </div>
-    
-      
+          <Schedule/>
          <Course_Materials/>
           <Task />
     
@@ -184,6 +213,12 @@ function PerformanceTracker({wideBar, id, setFragment}) {
             size={200}
             className=' mt-5'
           />
+          <div className='mt-10'>
+            <h1 className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mb-5 leading-[1.2] tracking-tighter text-transparent  sm:text-[2rem] text-center sm:leading-[4.75rem]'>Tutor Contact</h1>
+            <TutorCard tutorDetails={tutorDetails}/>
+
+          </div>
+
           
         </div>
       )
@@ -194,7 +229,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
       <h2 className=' text-center text-2xl font-bold m-3'>Course Contents</h2>
       
       <ol >
-        {(contentDetails.contents||[]).map((moduleName, index)=>(
+        {(contentDetails?.contents||[]).map((moduleName, index)=>(
 
             <li className='bg-gradient-to-r from-gray-800 rounded-xl even:from-slate-900 shadow-md hover:scale-105' key={index}>
               <div className='flex justify-between p-3 m-5 cursor-pointer flex-wrap' onClick={()=> toggleModuleVisibility(index)}>
@@ -233,6 +268,11 @@ function PerformanceTracker({wideBar, id, setFragment}) {
             Curriculum <span className=' uppercase font-bold'>{id}</span> </a>
             
         </div>
+      )
+    }
+    {
+      paid&&(
+        <TutorCard tutorDetails={tutorDetails}/>
       )
     }
     
