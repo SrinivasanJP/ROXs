@@ -41,7 +41,7 @@
     }
     html{
         /* @apply  md:bg-gray-950 */
-        @apply bg-[#0c1015] overflow-x-hidden
+        @apply bg-[#0c1015] overflow-x-hidden min-h-screen
     }
     td,th{
         @apply border-b-2 p-2 border-gray-500

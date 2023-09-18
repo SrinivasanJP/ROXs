@@ -14,7 +14,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
   const [paid, setpaid] = useState(false)
   const handlePayment = ()=>{
-    location.href=(`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`)
+    document.location.href = (`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`)
   }
 
   useEffect(()=>{
@@ -185,7 +185,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
   const wideD =  wideBar?darkColors["mainD"]+" h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" h-full"
 
   return (
-    <div className={paid?wideD:wideD+" h-[100em]"}>
+    <div className={paid?wideD:wideD+ " min-h-screen h-[70em]"}>
     <TopNav fragmentName={"ROXs Academy"}/>
     <div className={paid?" blur-0 flex flex-col justify-center items-center my-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center my-20 md:w-[70%]  p-5"}>
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
@@ -197,7 +197,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
     
     {
       !paid &&(
-        <div className='  absolute top-40 p-10  max-w-screen max-h-screen h-screen flex flex-col items-center'>
+        <div className='  absolute top-10 p-10  max-w-full max-h-full h-full flex flex-col items-center'>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-16 h-16 inline-block">
   <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
 </svg>
