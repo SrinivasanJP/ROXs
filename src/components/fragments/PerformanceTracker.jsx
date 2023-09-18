@@ -14,7 +14,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 
   const [paid, setpaid] = useState(false)
   const handlePayment = ()=>{
-    document.location.href(`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`)
+    location.href=(`upi://pay?pa=${tutorDetails.upi}&pn=${tutorDetails.Name}&cu=INR&am=${tutorDetails.am}&tn=payment for ${courseDetails.Title}`)
   }
 
   useEffect(()=>{
@@ -185,7 +185,7 @@ function PerformanceTracker({wideBar, id, setFragment}) {
   const wideD =  wideBar?darkColors["mainD"]+" h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" h-full"
 
   return (
-    <div className={paid?wideD:wideD+" h-[70em]"}>
+    <div className={paid?wideD:wideD+" h-[100em]"}>
     <TopNav fragmentName={"ROXs Academy"}/>
     <div className={paid?" blur-0 flex flex-col justify-center items-center my-20 md:w-[70%]  p-5":" blur-xl flex flex-col justify-center items-center my-20 md:w-[70%]  p-5"}>
       <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
