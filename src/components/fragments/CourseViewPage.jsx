@@ -3,11 +3,13 @@ import { auth, db } from '../../config/firebase'
 import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { darkColors } from '../../config/styleClass'
 import TopNav from '../TopNav'
+import TutorCard from '../TutorCard'
 function CourseViewPage({wideBar, setFragement, id}) {  
 
   const [courseDetails,setCourseDetails] = useState({})
   const [contentDetails, setContentDetails] = useState({})
   const [registerText, setRegisterText] = useState("Register")
+  const [tutorDetails, setTutorDetails] = useState({})
 
   const [regFlag, setRegFlag] = useState(false)
   useEffect(()=>{
@@ -55,6 +57,14 @@ function CourseViewPage({wideBar, setFragement, id}) {
       })();
 
     },[])
+    useEffect(()=>{
+      const tutorDetails = async ()=>{
+        const detailsRef = doc(db,"courses","wtw2301","tutorDetails","Admin")
+        const detailsSnap = await getDoc(detailsRef)
+        setTutorDetails(detailsSnap.data())
+        }
+        tutorDetails()
+    },[])
     const maxRating = 5;
   const filledStars = Math.round(courseDetails.ratings);
   const emptyStars = maxRating - filledStars;
@@ -97,6 +107,53 @@ function CourseViewPage({wideBar, setFragement, id}) {
         {regFlag?<h1>Registered</h1>: <h1>Register</h1>}
       </div>
   )
+  const CourseIncludes = ()=>(
+    <div  className='mt-5 pb-[6em]  md:w-[70%] p-5'>
+      <h1 className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mb-5 leading-[1.2] tracking-tighter text-transparent  sm:text-[2rem] text-center sm:leading-[4.75rem]'>All you want to know</h1>
+      <table>
+        <tr>
+          <td>Workshop Starts from</td>
+          <td>{courseDetails?.includes?.startsFrom}</td>
+        </tr>
+        <tr>
+          <td>Workshop Timing</td>
+          <td>{courseDetails?.includes?.timing}</td>
+        </tr>
+        <tr>
+          <td>Classes during</td>
+          <td>{courseDetails?.includes?.classes}</td>
+        </tr>
+        <tr>
+          <td>Course Language</td>
+          <td>{courseDetails?.includes?.language}</td>
+        </tr>
+        <tr>
+          <td>Lecture hours</td>
+          <td>{courseDetails?.includes?.lecturehours}</td>
+        </tr>
+        <tr>
+          <td>Assessments submission</td>
+          <td>{courseDetails?.includes?.assessments}</td>
+        </tr>
+        <tr>
+          <td>Materials assessble </td>
+          <td>{courseDetails?.includes?.materials}</td>
+        </tr>
+        <tr>
+          <td>Technical Requirement </td>
+          <td>{courseDetails?.includes?.technicalRequirement}</td>
+        </tr>
+        <tr>
+          <td>Final Project</td>
+          <td>Portfolio website for your profile</td>
+        </tr>
+        <tr>
+          <td>Further Details contact tutor</td>
+          <td>{courseDetails?.author}</td>
+        </tr>
+      </table>
+    </div>
+  )
 
   
 
@@ -104,7 +161,14 @@ function CourseViewPage({wideBar, setFragement, id}) {
 
     <div className={wideBar?darkColors["mainD"]+" md:h-full blur-sm md:filter-none md:ml-[12em]":darkColors["mainD"]+" md:h-full"}>
       <TopNav fragmentName={"ROXs Academy"}/>
-      <div className=' flex flex-col justify-center items-center mt-20 md:w-[70%]  p-5'>
+      {
+        regFlag && (
+          <div className=' mt-20 text-orange-400'>
+            <p>You already registerd this course check out Performance Tab </p>
+          </div>
+        )
+      }
+      <div className=' flex flex-col justify-center items-center mt-10 md:w-[70%]  p-5'>
         <img src={courseDetails.thumbnail} alt="thumbnail for course" className=' w-[35em] my-5 rounded-[1em] shadow-2xl shadow-green-500'/>
         <h1 className=' font-extrabold text-2xl'>{courseDetails.Title}</h1>
         <p className=' my-5 text-lg text-justify'>{courseDetails.sDescription}</p>
@@ -139,6 +203,13 @@ function CourseViewPage({wideBar, setFragement, id}) {
         </ol>
       </div>
       <Requirements />
+      <CourseIncludes />
+      <div className=' mb-32 sm:mb-14'>
+            <h1 className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mb-5 leading-[1.2] tracking-tighter text-transparent  sm:text-[2rem] text-center sm:leading-[4.75rem]'>Tutor Contact</h1>
+            <TutorCard tutorDetails={tutorDetails}/>
+
+          </div>
+
       <div className='w-[95%] fixed bottom-0 md:flex md:justify-center md:items-center bg-gradient-to-r from-gray-900 backdrop-blur-sm'>
           <h1 className='hidden md:block w-[40%] text-center font-extrabold text-2xl '>{courseDetails.Title}</h1>
           <p className='text-center m-3 text-xl font-semibold'>{"Just Rs."+courseDetails.amount+".00"}</p>
@@ -160,6 +231,7 @@ const Requirements = ()=>
 
     </div>
   )
+
  
 
 export default CourseViewPage
