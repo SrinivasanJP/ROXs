@@ -4,7 +4,7 @@ import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { darkColors } from '../../config/styleClass'
 import TopNav from '../TopNav'
 import TutorCard from '../TutorCard'
-function CourseViewPage({wideBar, setFragement, id}) {  
+function CourseViewPage({wideBar, setFragment, id}) {  
 
   const [courseDetails,setCourseDetails] = useState({})
   const [contentDetails, setContentDetails] = useState({})
@@ -92,6 +92,7 @@ function CourseViewPage({wideBar, setFragement, id}) {
       const userRef = doc(db, "user", auth.currentUser.uid,"registeredCourses",id)
       await setDoc(userRef,{register:true}).then(()=>{
         setRegFlag(true)
+        setFragment(["performanceTracker", id])
       }).catch((err)=>{
         alert(err)
       })
@@ -110,46 +111,46 @@ function CourseViewPage({wideBar, setFragement, id}) {
   const CourseIncludes = ()=>(
     <div  className='mt-5 pb-[6em]  md:w-[70%] p-5'>
       <h1 className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mb-5 leading-[1.2] tracking-tighter text-transparent  sm:text-[2rem] text-center sm:leading-[4.75rem]'>All you want to know</h1>
-      <table>
+      <table className=' table-auto mx-auto'>
         <tr>
-          <td>Workshop Starts from</td>
-          <td>{courseDetails?.includes?.startsFrom}</td>
+          <td className='p-5 w-[40%]'>Workshop Starts from</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.startsFrom}</td>
         </tr>
         <tr>
-          <td>Workshop Timing</td>
-          <td>{courseDetails?.includes?.timing}</td>
+          <td className='p-5 w-[40%]'>Workshop Timing</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.timing}</td>
         </tr>
         <tr>
-          <td>Classes during</td>
-          <td>{courseDetails?.includes?.classes}</td>
+          <td className='p-5 w-[40%]'>Classes during</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.classes}</td>
         </tr>
         <tr>
-          <td>Course Language</td>
-          <td>{courseDetails?.includes?.language}</td>
+          <td className='p-5 w-[40%]'>Course Language</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.language}</td>
         </tr>
         <tr>
-          <td>Lecture hours</td>
-          <td>{courseDetails?.includes?.lecturehours}</td>
+          <td className='p-5 w-[40%]'>Lecture hours</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.lecturehours}</td>
         </tr>
         <tr>
-          <td>Assessments submission</td>
-          <td>{courseDetails?.includes?.assessments}</td>
+          <td className='p-5 w-[40%]'>Assessments submission</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.assessments}</td>
         </tr>
         <tr>
-          <td>Materials assessble </td>
-          <td>{courseDetails?.includes?.materials}</td>
+          <td className='p-5 w-[40%]'>Materials assessble </td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.materials}</td>
         </tr>
         <tr>
-          <td>Technical Requirement </td>
-          <td>{courseDetails?.includes?.technicalRequirement}</td>
+          <td className='p-5 w-[40%]'>Technical Requirement </td>
+          <td className='p-5 w-[40%]'>{courseDetails?.includes?.technicalRequirement}</td>
         </tr>
         <tr>
-          <td>Final Project</td>
-          <td>Portfolio website for your profile</td>
+          <td className='p-5 w-[40%]'>Final Project</td>
+          <td className='p-5 w-[40%]'>Portfolio website for your profile</td>
         </tr>
         <tr>
-          <td>Further Details contact tutor</td>
-          <td>{courseDetails?.author}</td>
+          <td className='p-5 w-[40%]'>Further Details contact tutor</td>
+          <td className='p-5 w-[40%]'>{courseDetails?.author}</td>
         </tr>
       </table>
     </div>
