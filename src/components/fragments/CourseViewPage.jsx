@@ -165,7 +165,7 @@ function CourseViewPage({wideBar, setFragment, id}) {
       {
         regFlag && (
           <div className=' mt-20 text-orange-400'>
-            <p>You already registerd this course check out Performance Tab </p>
+            <p>You already registerd this course, check out Performance Tab </p>
           </div>
         )
       }
