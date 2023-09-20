@@ -203,7 +203,6 @@ function PerformanceTracker({wideBar, id, setFragment}) {
 </svg>
 
           <h1 className="font-extrabold text-3xl">Payment is not done yet</h1>
-          {/* <p>It is offline Course so contact the Tutor to make payment</p> */}
           <p className='text-center mt-5 text-orange-500'>Note* once the payment is done contact tutor with the screenshot </p>
           <button className="inline-flex items-center px-4 justify-center py-2 mt-5 font-bold leading-6 text-sm shadow rounded-md bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] text-gray-900 min-w-[7em] transition ease-in-out duration-150 md:hidden" onClick={handlePayment}>Pay now</button>
           <p className='bg-[radial-gradient(138.06%_1036.51%_at_95.25%_-2.54%,_#7ED4FD_14.06%,#709DF7_51.02%,#4D78EF_79.09%)] bg-clip-text text-xl font-bold mt-10 leading-[1.2] tracking-tighter text-transparent sm:text-center sm:text-[2rem] sm:leading-[4.75rem] lg:text-left' >Scan Me to Pay</p>
